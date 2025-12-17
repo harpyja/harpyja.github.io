@@ -3,3 +3,30 @@
  * Its purpose is for users of the theme to be able to add css rules from a blank file
  *   these get simply added to the ones already active in the layout.
  */
+
+/* Post meta: smaller muted date/time under title */
+.page-meta {
+	margin-top: 6px;
+	margin-bottom: 12px;
+	color: rgba(0,0,0,0.55);
+	font-size: 0.92rem;
+}
+
+/* Tags styling */
+.post-tags {
+	margin: 6px 0 16px 0;
+	font-size: 0.95rem;
+	color: rgba(0,0,0,0.65);
+}
+.post-tags .tag {
+	display: inline-block;
+	margin-right: 8px;
+	padding: 3px 8px;
+	background: rgba(0,0,0,0.04);
+	color: inherit;
+	border-radius: 12px;
+	text-decoration: none;
+}
+.post-tags .tag:hover {
+	background: rgba(0,0,0,0.08);
+}

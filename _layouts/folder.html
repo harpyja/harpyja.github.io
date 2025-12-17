@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        {%- include head.html -%}
+    </head>
+    <body>
+        <div class="book">
+            {%- include toc-date.html -%}
+
+            <div class="book-body">
+                <div class="book-header" role="navigation">
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        <a href="." >{{ page.title | escape }}</a>
+                    </h1>
+                </div>
+
+                <div class="body-inner">
+                    <div class="page-inner">
+                        <section class="normal markdown-section">
+                            <h2>目录：{{ page.dir | replace: '-', ' ' | capitalize }}</h2>
+                            <ul class="folder-post-list">
+                                {% assign posts = site.posts | where_exp: 'p', 'p.path contains page.dir_slug' %}
+                                {% assign posts_sorted = posts | sort: 'date' | reverse %}
+                                {% for post in posts_sorted %}
+                                    <li>
+                                      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                                      <span class="post-date"> — {{ post.date | date: "%Y-%m-%d" }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            {%- include footer.html -%}
+        </div>
+    </body>
+</html>

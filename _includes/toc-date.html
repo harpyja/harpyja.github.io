@@ -80,8 +80,23 @@
                                         {% if dir == '' %}
                                             {% assign current_group = '' %}
                                         {% else %}
-                                            <li class="chapter folder" data-level="1.1" data-path="{{site.baseurl}}/{{dir}}">
-                                                <a href="#" onclick="return false;">{{ dir | replace: '-', ' ' | capitalize }}</a>
+                                            {% assign dir_slug = dir | slugify %}
+                                            {% assign folder_path = site.baseurl | append: '/' | append: dir_slug | append: '/' %}
+                                            {% assign posts_in_dir = posts_sorted | where_exp: 'p', 'p.path contains dir_slug' %}
+                                            {% assign first_post_in_dir = posts_in_dir | first %}
+                                            {% assign folder_page_exist = site.pages | where: 'url', folder_path %}
+                                            {% if page.url contains '/' | append: dir_slug | append: '/' %}
+                                                <li class="chapter folder active" data-level="1.1" data-path="{{ folder_path }}">
+                                            {% else %}
+                                                <li class="chapter folder" data-level="1.1" data-path="{{ folder_path }}">
+                                            {% endif %}
+                                                {% if folder_page_exist.size > 0 %}
+                                                    <a href="{{ folder_path }}" onclick="pageScrollToTop(this)">{{ dir | replace: '-', ' ' | capitalize }}</a>
+                                                {% elsif first_post_in_dir %}
+                                                    <a href="{{ site.baseurl }}{{ first_post_in_dir.url }}" onclick="pageScrollToTop(this)">{{ dir | replace: '-', ' ' | capitalize }}</a>
+                                                {% else %}
+                                                    <a href="{{ folder_path }}" onclick="pageScrollToTop(this)">{{ dir | replace: '-', ' ' | capitalize }}</a>
+                                                {% endif %}
                                                 <ul>
                                             {% assign current_group = dir %}
                                         {% endif %}

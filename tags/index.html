@@ -1,0 +1,17 @@
+---
+layout: post
+title: 标签
+permalink: /tags/
+---
+
+<h1>全部标签</h1>
+<ul class="all-tags">
+  {% assign tags_list = site.tags | sort %}
+  {% for tag in tags_list %}
+    {% assign tag_name = tag[0] %}
+    {% assign posts = tag[1] %}
+    <li>
+      <a href="{{ site.baseurl }}/tag/{{ tag_name | slugify }}/">{{ tag_name }}</a> ({{ posts | size }})
+    </li>
+  {% endfor %}
+</ul>

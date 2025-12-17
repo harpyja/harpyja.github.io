@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    {%- include head.html -%}
+  </head>
+  <body>
+    <div class="book">
+      {%- include toc-date.html -%}
+      <div class="book-body">
+        <div class="book-header" role="navigation">
+          <h1>标签：{{ page.tag }}</h1>
+        </div>
+
+        <div class="body-inner">
+          <div class="page-inner">
+            <section class="normal markdown-section">
+              <ul class="tag-post-list">
+                {% assign posts = site.tags[page.tag] | sort: 'date' | reverse %}
+                {% for post in posts %}
+                  <li>
+                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                    <span class="tag-post-date"> — {{ post.date | date: "%Y-%m-%d" }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+      {%- include footer.html -%}
+    </div>
+  </body>
+</html>
