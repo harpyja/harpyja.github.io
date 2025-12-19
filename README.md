@@ -1,9 +1,9 @@
 ---
 layout: home
-title: 爱门镇站
+title: 爱门
 permalink: /
 ---
 
  
-![爱门镇站]({{ site.baseurl }}/assets/images/Elysia.jpeg)
+![Elysia]({{ site.baseurl }}/assets/images/Elysia.jpeg)
 
