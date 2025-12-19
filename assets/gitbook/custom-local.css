@@ -12,6 +12,24 @@
 	font-size: 0.92rem;
 }
 
+/* Center article title and metadata in the right content area */
+.book-header h1,
+.book-body .page-inner .markdown-section h1,
+.book-body .page-inner .page-meta,
+.book-body .page-inner .post-tags {
+  text-align: center !important;
+}
+
+/* Keep header link layout tidy */
+.book-header h1 a { display: inline-block; }
+
+.page-meta {
+	margin-top: 6px;
+	margin-bottom: 12px;
+	color: rgba(0,0,0,0.55);
+	font-size: 0.92rem;
+}
+
 /* Tags styling */
 .post-tags {
 	margin: 6px 0 16px 0;
